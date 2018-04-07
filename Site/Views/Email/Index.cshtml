@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Enviar Email</title>
+    <link href="~/Content/Bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/FontAwesome/css/font-awesome.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h2>Envio de E-mail</h2>
+        </div>
+        <form method="post" action="/Email/EnviaEmail">
+            <div class="form-group">
+                <div class="col-sm-6">
+                    <label>E-mail</label>
+                    <input type="text" name="EmailModel.Email" class="form-control" placeholder="Informe o e-mail" required />
+                </div>
+                <div class="col-sm-6">
+                    <label>Assunto</label>
+                    <input type="text" name="EmailModel.Assunto" class="form-control" placeholder="Informe o assunto" required /><br />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <label>Mensagem</label>
+                    <textarea name="EmailModel.Mensagem" rows="4" class="form-control" placeholder="Informe a mensagem" required></textarea><br />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <button type="submit" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-send"></span> Enviar
+                    </button><br /><br />
+                </div>
+            </div>
+        </form>
+        <div class="col-sm-12">
+            @if (TempData["MenssagemOk"] != null)
+            {
+            <div class="alert alert-success alert-dismissible">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Successo!</strong> @TempData["MenssagemOk"]
+            </div>
+            }
+            else if (TempData["MessagemFail"] != null)
+            {
+            <div class="alert alert-danger alert-dismissible">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Falha!</strong> @TempData["MessagemFail"]
+            </div>
+            }
+        </div>
+    </div>
+    <script src="~/Content/jQuery/jquery-1.11.3.min.js"></script>
+    <script src="~/Content/Bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
